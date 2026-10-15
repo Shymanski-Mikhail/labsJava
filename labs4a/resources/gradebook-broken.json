@@ -1,0 +1,13 @@
+{
+  "fullName": "Иванов Иван Иванович",
+  "course": 15,
+  "group": "101",
+  "sessions": [
+    {
+      "number": 1,
+      "subjects": [
+        { "name": "Математика", "type": "Экзамен", "grade": "9" }
+      ]
+    }
+  ]
+}
