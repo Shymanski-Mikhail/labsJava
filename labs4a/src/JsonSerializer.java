@@ -35,16 +35,25 @@ public class JsonSerializer {
             String description = describeKey(key);
 
             if (value instanceof JSONObject) {
-                System.out.println(pad + description + ":");
+                StringBuilder sb = new StringBuilder();
+                sb.append(pad).append(description).append(":");
+                System.out.println(sb.toString());
                 printNode((JSONObject) value, indent + 1);
+
             } else if (value instanceof JSONArray) {
-                System.out.println(pad + description + ":");
+                StringBuilder sb = new StringBuilder();
+                sb.append(pad).append(description).append(":");
+                System.out.println(sb.toString());
+
                 JSONArray arr = (JSONArray) value;
                 for (int i = 0; i < arr.length(); i++) {
                     printNode(arr.getJSONObject(i), indent + 1);
                 }
+
             } else {
-                System.out.println(pad + description + ": " + value);
+                StringBuilder sb = new StringBuilder();
+                sb.append(pad).append(description).append(": ").append(value);
+                System.out.println(sb.toString());
             }
         }
     }

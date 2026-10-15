@@ -23,7 +23,10 @@ public class JsonValidator {
         }
         int course = json.getInt("course");
         if (course < 1 || course > 6) {
-            errorMessage = "course должен быть от 1 до 6, получено: " + course;
+            errorMessage = new StringBuilder()
+                    .append("course должен быть от 1 до 6, получено: ")
+                    .append(course)
+                    .toString();
             return false;
         }
 
@@ -54,17 +57,30 @@ public class JsonValidator {
 
     private boolean validateSession(JSONObject session, int index) {
         if (!session.has("number")) {
-            errorMessage = "Сессия " + index + ": отсутствует number";
+            errorMessage = new StringBuilder()
+                    .append("Сессия ")
+                    .append(index)
+                    .append(": отсутствует number")
+                    .toString();
             return false;
         }
         int number = session.getInt("number");
         if (number < 1 || number > 9) {
-            errorMessage = "Сессия " + index + ": number должен быть 1-9, получено: " + number;
+            errorMessage = new StringBuilder()
+                    .append("Сессия ")
+                    .append(index)
+                    .append(": number должен быть 1-9, получено: ")
+                    .append(number)
+                    .toString();
             return false;
         }
 
         if (!session.has("subjects")) {
-            errorMessage = "Сессия " + index + ": отсутствует subjects";
+            errorMessage = new StringBuilder()
+                    .append("Сессия ")
+                    .append(index)
+                    .append(": отсутствует subjects")
+                    .toString();
             return false;
         }
 
@@ -80,21 +96,45 @@ public class JsonValidator {
 
     private boolean validateSubject(JSONObject subject, int sIndex, int subjIndex) {
         if (!subject.has("name")) {
-            errorMessage = "Сессия " + sIndex + ", предмет " + subjIndex + ": нет name";
+            errorMessage = new StringBuilder()
+                    .append("Сессия ")
+                    .append(sIndex)
+                    .append(", предмет ")
+                    .append(subjIndex)
+                    .append(": нет name")
+                    .toString();
             return false;
         }
         if (!subject.has("type")) {
-            errorMessage = "Сессия " + sIndex + ", предмет " + subjIndex + ": нет type";
+            errorMessage = new StringBuilder()
+                    .append("Сессия ")
+                    .append(sIndex)
+                    .append(", предмет ")
+                    .append(subjIndex)
+                    .append(": нет type")
+                    .toString();
             return false;
         }
         String type = subject.getString("type");
         if (!type.equals("Экзамен") && !type.equals("Зачет")) {
-            errorMessage = "Сессия " + sIndex + ", предмет " + subjIndex
-                    + ": type должен быть 'Экзамен' или 'Зачет', получено: " + type;
+            errorMessage = new StringBuilder()
+                    .append("Сессия ")
+                    .append(sIndex)
+                    .append(", предмет ")
+                    .append(subjIndex)
+                    .append(": type должен быть 'Экзамен' или 'Зачет', получено: ")
+                    .append(type)
+                    .toString();
             return false;
         }
         if (!subject.has("grade")) {
-            errorMessage = "Сессия " + sIndex + ", предмет " + subjIndex + ": нет grade";
+            errorMessage = new StringBuilder()
+                    .append("Сессия ")
+                    .append(sIndex)
+                    .append(", предмет ")
+                    .append(subjIndex)
+                    .append(": нет grade")
+                    .toString();
             return false;
         }
         return true;

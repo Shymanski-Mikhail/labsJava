@@ -14,31 +14,54 @@ public class Main {
 
             JsonSerializer serializer = new JsonSerializer();
             serializer.saveToFile(book, JSON_FILE);
-            System.out.println("JSON сохранён: " + JSON_FILE);
+
+            System.out.println(new StringBuilder()
+                    .append("JSON сохранён: ")
+                    .append(JSON_FILE)
+                    .toString());
 
             JsonValidator validator = new JsonValidator();
 
             System.out.println();
-            System.out.println("Проверка " + JSON_FILE + ":");
+            System.out.println(new StringBuilder()
+                    .append("Проверка ")
+                    .append(JSON_FILE)
+                    .append(":")
+                    .toString());
+
             JSONObject json1 = readJson(JSON_FILE);
             if (validator.validate(json1)) {
                 System.out.println("Файл корректен");
                 serializer.printWithDescriptions(JSON_FILE);
             } else {
-                System.out.println("Файл НЕкорректен: " + validator.getErrorMessage());
+                System.out.println(new StringBuilder()
+                        .append("Файл НЕкорректен: ")
+                        .append(validator.getErrorMessage())
+                        .toString());
             }
 
             System.out.println();
-            System.out.println("Проверка " + BROKEN_FILE + ":");
+            System.out.println(new StringBuilder()
+                    .append("Проверка ")
+                    .append(BROKEN_FILE)
+                    .append(":")
+                    .toString());
+
             JSONObject json2 = readJson(BROKEN_FILE);
             if (validator.validate(json2)) {
                 System.out.println("Файл корректен");
             } else {
-                System.out.println("Файл НЕкорректен: " + validator.getErrorMessage());
+                System.out.println(new StringBuilder()
+                        .append("Файл НЕкорректен: ")
+                        .append(validator.getErrorMessage())
+                        .toString());
             }
 
         } catch (Exception e) {
-            System.err.println("Ошибка: " + e.getMessage());
+            System.err.println(new StringBuilder()
+                    .append("Ошибка: ")
+                    .append(e.getMessage())
+                    .toString());
         }
     }
 
